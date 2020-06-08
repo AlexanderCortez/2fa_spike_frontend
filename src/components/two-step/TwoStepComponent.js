@@ -94,6 +94,7 @@ export class TwoStepComponent extends Component {
   }
 
   render() {
+    const { currentUser } = this.props;
     return (
       <Wrapper>
         <p className="title">
@@ -103,7 +104,7 @@ export class TwoStepComponent extends Component {
           Setting up two-step verification is easy, just follow the steps below.
         </p>
         <p>
-          Name: Alexander Cortez
+          Name: {currentUser.name || ''}
         </p>
         {this.renderSteps()}
       </Wrapper>

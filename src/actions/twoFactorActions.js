@@ -21,3 +21,11 @@ export const deactivateTwoStep = () => (dispatch) => axios
     dispatch(getAction(DISABLE_TWO_STEP));
   })
   .catch((err) => Promise.reject(err.response.data));
+
+export const validateTwoStepToken = (token, accessToken) => () => axios
+  .post('/two-factor/validate',
+    { token }, { headers: { Authorization: `Bearer ${accessToken}` } })
+  .then(() => {
+
+  })
+  .catch((err) => Promise.reject(err.response.data));
