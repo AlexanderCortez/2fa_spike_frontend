@@ -1,11 +1,15 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
+import PropTypes from 'prop-types';
 
-export const LoginForm = () => (
+export const LoginForm = ({
+  handleLogin,
+}) => (
   <Form
     style={{ minWidth: '400px' }}
     name="normal_login"
     className="login-form"
+    onFinish={handleLogin}
   >
     <Form.Item
       name="email"
@@ -51,3 +55,7 @@ export const LoginForm = () => (
     Or <a href="/signup">register now!</a>
   </Form>
 );
+
+LoginForm.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
+};
