@@ -1,15 +1,5 @@
 [
   {
-    "id": 1,
-    "text": "General",
-    "isLabel": true
-  },
-  {
-    "id": 2,
-    "text": "Account Settings",
-    "link": ""
-  },
-  {
     "id": 3,
     "text": "Security",
     "isLabel": true

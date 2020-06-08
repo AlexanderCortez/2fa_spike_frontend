@@ -32,5 +32,5 @@ const BodyWrapper = styled.div`
 `;
 
 const Body = styled.div`
-  padding: 30px;
+  padding: 0 30px;
 `;

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { MainWrapper } from './components/global/MainWrapper';
+import { TwoStepComponent } from './components/two-step/TwoStepComponent';
 
-const RenderNotFoundPage = () => <h4>Pagina no encontrada</h4>;
+const RenderNotFoundPage = () => <h2>Pagina no encontrada</h2>;
 
 const AppMain = (props) => (
   <MainWrapper {...props}>
     <Switch>
+      <Route path="/" component={TwoStepComponent} />
       <Route component={RenderNotFoundPage} />
     </Switch>
   </MainWrapper>
@@ -14,7 +16,7 @@ const AppMain = (props) => (
 
 const App = () => (
   <Switch>
-    <Route path="/" exact component={AppMain} />
+    <Route path="/" component={AppMain} />
   </Switch>
 );
 
