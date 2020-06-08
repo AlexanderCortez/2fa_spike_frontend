@@ -12,6 +12,13 @@ export class SignUpComponent extends Component {
     };
   }
 
+  componentDidMount() {
+    const { logged, history } = this.props;
+    if (logged === true) {
+      history.push('/');
+    }
+  }
+
   changeLoadingStatus = (loading) => {
     this.setState({ loading });
   }
@@ -60,6 +67,7 @@ export class SignUpComponent extends Component {
 
 SignUpComponent.propTypes = {
   signUp: PropTypes.func.isRequired,
+  logged: PropTypes.bool.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 

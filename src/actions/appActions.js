@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { SIGN_IN_SUCCESSFULL } from '../actionTypes/appActionTypes';
+import { SIGN_IN_SUCCESSFULL, SET_LOGGED } from '../actionTypes/appActionTypes';
+import { setAuthorizationToken } from '../helpers/setAuthorizationToken';
 
-const getAction = (type, payload) => ({
+export const getAction = (type, payload) => ({
   type,
   payload,
 });
@@ -16,6 +17,8 @@ export const signIn = (params) => (dispatch) => axios
   .then((response) => {
     const { data } = response.data;
     dispatch(getAction(SIGN_IN_SUCCESSFULL, data.user));
+    dispatch(getAction(SET_LOGGED));
+    setAuthorizationToken(data.accessToken);
     return data;
   })
   .catch((err) => Promise.reject(err.response.data));
