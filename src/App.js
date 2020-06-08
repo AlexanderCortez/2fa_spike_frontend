@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { MainWrapper } from './components/global/MainWrapper';
 import { TwoStepComponent } from './components/two-step/TwoStepComponent';
 import { LoginComponent } from './components/login/LogInComponent';
-import { SignUpComponent } from './components/signup/SignUpComponent';
+import SignUpContainer from './components/signup/SignUpContainer';
 
 const RenderNotFoundPage = () => <h2>Pagina no encontrada</h2>;
 
@@ -19,7 +19,7 @@ const AppMain = (props) => (
 const App = () => (
   <Switch>
     <Route path="/signin" component={LoginComponent} />
-    <Route path="/signup" component={SignUpComponent} />
+    <Route path="/signup" component={SignUpContainer} />
     <Route path="/" component={AppMain} />
   </Switch>
 );
