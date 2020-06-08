@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { MainWrapper } from './components/global/MainWrapper';
 import SignUpContainer from './components/signup/SignUpContainer';
 import LogInContainer from './components/login/LogInContainer';
@@ -21,7 +21,7 @@ const App = () => (
   <Switch>
     <Route path="/signin" component={LogInContainer} />
     <Route path="/signup" component={SignUpContainer} />
-    <Route path="/" component={Authenticate(AppMain)} />
+    <Route path="/" component={Authenticate(withRouter(AppMain))} />
   </Switch>
 );
 

@@ -57,12 +57,12 @@ export class LoginComponent extends Component {
           if (user.twoAuthEnabled) {
             this.setState({ accessToken });
             this.openTwoStepVerificationModal();
+            this.changeLoadingStatus(false);
           } else {
             this.showSignInSuccessNotification();
             setAsLogged(accessToken);
             history.push('/');
           }
-          this.changeLoadingStatus(false);
         })
         .catch(() => {
           openNotificationWithIcon(
@@ -87,7 +87,6 @@ export class LoginComponent extends Component {
             'Two-Step Verification',
             'Token Validated',
           );
-          this.changeLoadingStatus(false);
           setAsLogged(accessToken);
           history.push('/');
         })
