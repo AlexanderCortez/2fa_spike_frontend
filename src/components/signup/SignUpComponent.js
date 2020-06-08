@@ -60,7 +60,7 @@ export class SignUpComponent extends Component {
 
 SignUpComponent.propTypes = {
   signUp: PropTypes.func.isRequired,
-  history: PropTypes.objectOf(PropTypes.object).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 const Wrapper = styled.div`
