@@ -11,7 +11,7 @@ export const checkToken = () => new Promise((resolve, reject) => {
     Axios.post('/auth/check-session-token')
       .then((response) => {
         const { data } = response.data;
-        store.dispatch(getAction(SIGN_IN_SUCCESSFULL, data.user));
+        store.dispatch(getAction(SIGN_IN_SUCCESSFULL, data));
         store.dispatch(getAction(SET_LOGGED));
         resolve(response.data);
       })

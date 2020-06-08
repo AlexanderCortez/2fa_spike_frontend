@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { SIGN_IN_SUCCESSFULL, SET_LOGGED } from '../actionTypes/appActionTypes';
+
+import { SIGN_IN_SUCCESSFULL, SET_LOGGED, SIGN_OUT } from '../actionTypes/appActionTypes';
 import { setAuthorizationToken } from '../helpers/setAuthorizationToken';
 
 export const getAction = (type, payload) => ({
@@ -22,3 +23,9 @@ export const signIn = (params) => (dispatch) => axios
     return data;
   })
   .catch((err) => Promise.reject(err.response.data));
+
+export const signOut = (history) => (dispatch) => {
+  dispatch(getAction(SIGN_OUT));
+  localStorage.removeItem('_s');
+  history.push('/signin');
+};

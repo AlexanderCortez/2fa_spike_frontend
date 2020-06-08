@@ -1,4 +1,5 @@
-import { SIGN_IN_SUCCESSFULL, SET_LOGGED } from '../actionTypes/appActionTypes';
+import { SIGN_IN_SUCCESSFULL, SET_LOGGED, SIGN_OUT } from '../actionTypes/appActionTypes';
+import { DISABLE_TWO_STEP } from '../actionTypes/twoFactorActionTypes';
 
 const initialState = {
   logged: false,
@@ -17,6 +18,18 @@ const AppReducer = (state = initialState, action) => {
     return {
       ...state,
       logged: true,
+    };
+  }
+  if (type === SIGN_OUT) {
+    return initialState;
+  }
+  if (type === DISABLE_TWO_STEP) {
+    return {
+      ...state,
+      currentUser: {
+        ...state.currentUser,
+        twoAuthEnabled: false,
+      },
     };
   }
   return state;
