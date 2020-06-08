@@ -1,12 +1,26 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 
-export const LoginForm = () => (
+export const SignUpForm = () => (
   <Form
     style={{ minWidth: '400px' }}
     name="normal_login"
     className="login-form"
   >
+    <Form.Item
+      name="name"
+      rules={[
+        {
+          required: true,
+          message: 'Please type your Name',
+        },
+      ]}
+    >
+      <Input
+        autoFocus
+        placeholder="Name"
+      />
+    </Form.Item>
     <Form.Item
       name="email"
       rules={[
@@ -18,7 +32,6 @@ export const LoginForm = () => (
           type: 'email',
           message: 'The input is not valid E-mail',
         },
-
       ]}
     >
       <Input
@@ -45,8 +58,9 @@ export const LoginForm = () => (
         type="primary"
         htmlType="submit"
       >
-        Log in
+        Register
       </Button>
     </Form.Item>
+    Or <a href="/signin">Sign In now!</a>
   </Form>
 );
