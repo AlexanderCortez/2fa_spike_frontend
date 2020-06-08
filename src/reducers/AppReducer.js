@@ -1,4 +1,4 @@
-import { SIGN_IN_SUCCESSFULL } from '../actionTypes/appActionTypes';
+import { SIGN_IN_SUCCESSFULL, SET_LOGGED } from '../actionTypes/appActionTypes';
 
 const initialState = {
   logged: false,
@@ -11,6 +11,12 @@ const AppReducer = (state = initialState, action) => {
     return {
       ...state,
       currentUser: payload,
+    };
+  }
+  if (type === SET_LOGGED) {
+    return {
+      ...state,
+      logged: true,
     };
   }
   return state;

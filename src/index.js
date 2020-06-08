@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import axios from 'axios';
 import store from './store';
+import { checkToken } from './helpers/checkToken';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
@@ -17,16 +18,29 @@ const url = NODE_ENV === 'production'
 
 axios.defaults.baseURL = url;
 
-ReactDOM.render(
-  <React.StrictMode>
+const renderLoading = () => {
+  ReactDOM.render(
+    <h3>loading...</h3>,
+    document.getElementById('root'),
+  );
+};
+
+const renderApp = () => {
+  ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+    </Provider>,
+    document.getElementById('root'),
+  );
+};
+
+renderLoading();
+
+checkToken()
+  .then(renderApp)
+  .catch(renderApp);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
