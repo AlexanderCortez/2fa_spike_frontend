@@ -1,11 +1,15 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
+import PropTypes from 'prop-types';
 
-export const SignUpForm = () => (
+export const SignUpForm = ({
+  handleSignUp,
+  loading,
+}) => (
   <Form
     style={{ minWidth: '400px' }}
-    name="normal_login"
     className="login-form"
+    onFinish={handleSignUp}
   >
     <Form.Item
       name="name"
@@ -45,6 +49,10 @@ export const SignUpForm = () => (
           required: true,
           message: 'Please type your Password',
         },
+        {
+          min: 6,
+          message: 'The Password must have at least 6 characters',
+        },
       ]}
     >
       <Input
@@ -55,6 +63,7 @@ export const SignUpForm = () => (
 
     <Form.Item>
       <Button
+        loading={loading}
         type="primary"
         htmlType="submit"
       >
@@ -64,3 +73,13 @@ export const SignUpForm = () => (
     Or <a href="/signin">Sign In now!</a>
   </Form>
 );
+
+
+SignUpForm.propTypes = {
+  handleSignUp: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+};
+
+SignUpForm.defaultProps = {
+  loading: false,
+};
