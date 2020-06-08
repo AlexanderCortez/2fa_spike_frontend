@@ -18,7 +18,6 @@ const Auth = (AppComponents) => {
     }
 
     setStateToComponent = ({ logged, history }) => {
-      console.log('logged ##', logged);
       if (!logged) {
         history.push('/signin');
       } else {

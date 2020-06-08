@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Input, Button, Row, Col } from 'antd';
 
-export const Verification = () => {
+export const Verification = ({ handleActivation }) => {
   const [form] = Form.useForm();
   return (
     <Row>
@@ -10,6 +11,7 @@ export const Verification = () => {
           form={form}
           layout="vertical"
           name="form_in_modal"
+          onFinish={handleActivation}
         >
           <Form.Item
             name="verificationToken"
@@ -23,6 +25,7 @@ export const Verification = () => {
           <Form.Item>
             <Button
               type="primary"
+              htmlType="submit"
             >
               Enable two-step verification
             </Button>
@@ -31,4 +34,8 @@ export const Verification = () => {
       </Col>
     </Row>
   );
+};
+
+Verification.propTypes = {
+  handleActivation: PropTypes.func.isRequired,
 };
