@@ -72,10 +72,12 @@ export class TwoStepComponent extends Component {
 
   renderSteps = () => {
     const { loading } = this.state;
-    const { qrImage, currentUser } = this.props;
+    const { qrImage, currentUser, secretKey } = this.props;
     if (!currentUser.twoAuthEnabled) {
       return (
         <Steps
+          userEmail={currentUser.email}
+          secretKey={secretKey}
           loading={loading}
           handleActivation={this.handleActivation}
           qrImage={qrImage}
@@ -115,6 +117,7 @@ export class TwoStepComponent extends Component {
 TwoStepComponent.propTypes = {
   generateQR: PropTypes.func.isRequired,
   qrImage: PropTypes.string.isRequired,
+  secretKey: PropTypes.string.isRequired,
   activateTwoStep: PropTypes.func.isRequired,
   deactivateTwoStep: PropTypes.func.isRequired,
   currentUser: PropTypes.instanceOf(Object).isRequired,

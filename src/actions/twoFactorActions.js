@@ -6,7 +6,7 @@ export const generateQR = () => (dispatch) => axios
   .post('/two-factor/generate')
   .then((response) => {
     const { data } = response.data;
-    dispatch(getAction(GENERATE_QR_SUCCESS, data.qrImage));
+    dispatch(getAction(GENERATE_QR_SUCCESS, data));
   })
   .catch((err) => Promise.reject(err.response.data));
 
