@@ -8,7 +8,11 @@ export const Step = ({ step, title, component }) => (
       <Circle>
         <span>{step}</span>
       </Circle>
-      {title}
+      <span
+        className="step-title"
+      >
+        {title}
+      </span>
     </div>
     <div className="content">
       {component}
@@ -31,6 +35,9 @@ const Wrapper = styled.div`
   .header {
     display: flex;
     align-items: center;
+    .step-title {
+      color: #172B4D;
+    }
   }
   .content {
     padding: 10px 0 0 30px;

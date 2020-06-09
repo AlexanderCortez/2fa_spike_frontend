@@ -4,7 +4,12 @@ import { Step } from './Step';
 import { QRComponent } from './steps/QRComponent';
 import { Verification } from './steps/Verification';
 
-export const Steps = ({ qrImage, handleActivation }) => (
+export const Steps = ({
+  qrImage,
+  handleActivation,
+  userEmail,
+  secretKey,
+}) => (
   <div>
     <Step
       step="1"
@@ -16,6 +21,8 @@ export const Steps = ({ qrImage, handleActivation }) => (
       component={(
         <QRComponent
           qrImage={qrImage}
+          userEmail={userEmail}
+          secretKey={secretKey}
         />
       )}
     />
@@ -34,6 +41,8 @@ export const Steps = ({ qrImage, handleActivation }) => (
 Steps.propTypes = {
   qrImage: PropTypes.string,
   handleActivation: PropTypes.func.isRequired,
+  userEmail: PropTypes.string.isRequired,
+  secretKey: PropTypes.string.isRequired,
 };
 
 Steps.defaultProps = {

@@ -3,6 +3,7 @@ import { SIGN_OUT } from '../actionTypes/appActionTypes';
 
 const initialState = {
   qrImage: '',
+  secretKey: '',
   error: null,
 };
 
@@ -12,7 +13,8 @@ const TwoStepReducer = (state = initialState, action) => {
     return {
       ...state,
       error: null,
-      qrImage: payload,
+      secretKey: payload.secret,
+      qrImage: payload.qrImage,
     };
   }
   if (type === GENERATE_QR_ERROR) {

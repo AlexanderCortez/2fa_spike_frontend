@@ -4,11 +4,12 @@ import { generateQR, activateTwoStep, deactivateTwoStep } from '../../actions/tw
 import { signOut } from '../../actions/appActions';
 
 const mapStateToProps = (state) => {
-  const { qrImage } = state.TwoStepReducer;
+  const { qrImage, secretKey } = state.TwoStepReducer;
   const { currentUser } = state.AppReducer;
   return {
     qrImage,
     currentUser,
+    secretKey,
   };
 };
 
